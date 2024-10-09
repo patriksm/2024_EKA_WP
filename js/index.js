@@ -7,13 +7,19 @@ ground.src = "img/ground.png";
 //variables
 let refresh_rate = 100;
 let box = 32;
+
+let snake = [];
+snake[0] = {
+    x: 9 * box,
+    y: 10 * box
+}
 //--------
 
 function drawGame() {
     ctx.drawImage(ground, 0, 0);
 
     ctx.fillStyle = "yellow";
-    ctx.fillRect(0, 0, box, box);
+    ctx.fillRect(snake[0].x, snake[0].y, box, box);
 }
 
 let game = setInterval(drawGame, refresh_rate);
