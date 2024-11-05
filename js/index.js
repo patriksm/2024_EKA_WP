@@ -21,10 +21,8 @@ let food = {
     x: Math.floor(Math.random() * 17 + 1) * box,
     y: Math.floor(Math.random() * 15 + 3) * box
 }
-//--------
 
-document.addEventListener("keydown", (e)=>{
-    console.log(e.keyCode);
+document.addEventListener("keydown", (e) => {
     if (e.keyCode == "87" && dir != "down") dir = "up";
     if (e.keyCode == "83" && dir != "up") dir = "down";
     if (e.keyCode == "68" && dir != "left") dir = "right";
@@ -54,6 +52,10 @@ function drawGame() {
     let newHead = {
         x: snakeX,
         y: snakeY
+    }
+
+    if(snakeY == 1*box || snakeX == 0*box || snakeY == 19*box || snakeX == 19*box){
+        clearInterval(game);
     }
 
     snake.unshift(newHead);
