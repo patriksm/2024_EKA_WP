@@ -44,6 +44,10 @@ function drawGame() {
 
     snake.pop();
 
+    if(snakeY < 3*box || snakeX < 1*box || snakeY > 17*box || snakeX > 17*box){
+        clearInterval(game);
+    }
+    
     if (dir == "right") snakeX += box;
     if (dir == "left") snakeX -= box;
     if (dir == "up") snakeY -= box;
@@ -54,9 +58,7 @@ function drawGame() {
         y: snakeY
     }
 
-    if(snakeY == 1*box || snakeX == 0*box || snakeY == 19*box || snakeX == 19*box){
-        clearInterval(game);
-    }
+    
 
     snake.unshift(newHead);
 }
