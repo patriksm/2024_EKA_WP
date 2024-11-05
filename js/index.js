@@ -38,7 +38,7 @@ function drawGame() {
     ctx.fillText("Food units eaten: " + score, 1*box, 2*box);
 
     for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = i == 0 ? "yellow" : "green";
         ctx.fillRect(snake[i].x, snake[i].y, box, box);
     }
 
@@ -53,9 +53,9 @@ function drawGame() {
             x: Math.floor(Math.random() * 17 + 1) * box,
             y: Math.floor(Math.random() * 15 + 3) * box
         }
+    } else {
+        snake.pop();
     }
-
-    snake.pop();
 
     if(snakeY < 3*box || snakeX < 1*box || snakeY > 17*box || snakeX > 17*box){
         clearInterval(game);
@@ -70,8 +70,6 @@ function drawGame() {
         x: snakeX,
         y: snakeY
     }
-
-    
 
     snake.unshift(newHead);
 }
