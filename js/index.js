@@ -25,7 +25,10 @@ let food = {
 
 document.addEventListener("keydown", (e)=>{
     console.log(e.keyCode);
-    if (e.keyCode == "38") console.log(54);
+    if (e.keyCode == "87" && dir != "down") dir = "up";
+    if (e.keyCode == "83" && dir != "up") dir = "down";
+    if (e.keyCode == "68" && dir != "left") dir = "right";
+    if (e.keyCode == "65" && dir != "right") dir = "left";
 });
 
 function drawGame() {
@@ -43,10 +46,10 @@ function drawGame() {
 
     snake.pop();
 
-    if (dir = "right") snakeX += box;
-    if (dir = "left") snakeX -= box;
-    if (dir = "up") snakeY -= box;
-    if (dir = "down") snakeY += box;
+    if (dir == "right") snakeX += box;
+    if (dir == "left") snakeX -= box;
+    if (dir == "up") snakeY -= box;
+    if (dir == "down") snakeY += box;
 
     let newHead = {
         x: snakeX,
