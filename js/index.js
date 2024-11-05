@@ -16,6 +16,7 @@ snake[0] = {
     x: 9 * box,
     y: 10 * box
 }
+let score = 0;
 
 let food = {
     x: Math.floor(Math.random() * 17 + 1) * box,
@@ -32,6 +33,10 @@ document.addEventListener("keydown", (e) => {
 function drawGame() {
     ctx.drawImage(ground, 0, 0);
 
+    ctx.font = "40px Georgia";
+    ctx.fillStyle = "white";
+    ctx.fillText("Food units eaten: " + score, 1*box, 2*box);
+
     for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = "yellow";
         ctx.fillRect(snake[i].x, snake[i].y, box, box);
@@ -43,6 +48,7 @@ function drawGame() {
     let snakeY = snake[0].y;
 
     if (snakeX == food.x && snakeY == food.y) {
+        score++;
         food = {
             x: Math.floor(Math.random() * 17 + 1) * box,
             y: Math.floor(Math.random() * 15 + 3) * box
